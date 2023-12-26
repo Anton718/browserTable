@@ -20,12 +20,18 @@ let num = 0
 const btnDel = document.createElement("button")
 btnDel.style.marginRight = "5px"
 const btnAdd = document.createElement("button")
+const clrCash = document.createElement("button")
+
 btnDel.innerHTML = "delRow"
 btnAdd.innerHTML = "addRow"
+clrCash.innerHTML = "clearCash"
 const btnDiv = document.getElementById("btn")
 btnDiv.style.marginTop = "10px"
+btnAdd.style.marginRight = "5px"
 btnDiv.append(btnDel)
 btnDiv.append(btnAdd)
+btnDiv.append(clrCash)
+clrCash.addEventListener("click", () => {localStorage.clear(); location.reload()})
 
 
 let storage = {...localStorage}

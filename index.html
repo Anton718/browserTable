@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Table</title>
+  </head>
+  <body>
+    <table id="table" class="table">
+      <thead>
+        <tr>
+          <th data-type="number">No.</th>
+          <th data-type="string">Full name <img id="name_sort" width="12px" height="12px" src="./assets/images/up-and-down-arrow.png" alt="up_down"> </th>
+          <th data-type="date">Date of Birth <img id="date_sort" width="12px" height="12px" src="./assets/images/up-and-down-arrow.png" alt="up_down"> </th>
+          <th data-type="currency">Salary <img id="salary_sort" width="12px" height="12px" src="./assets/images/up-and-down-arrow.png" alt="up_down"> </th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr id="total">
+          <th>TOTAL</th>
+          <th id="total_items"></th>
+          <th id="total_dates"></th>
+          <th id="total_amount"></th>
+        </tr>
+      </tfoot>
+    </table>
+    <div id="btn"></div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

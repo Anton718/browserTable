@@ -33,10 +33,10 @@ btnDiv.append(btnAdd)
 btnDiv.append(clrCash)
 clrCash.addEventListener("click", () => {localStorage.clear(); location.reload()})
 
-
 let storage = {...localStorage}
 
 function createRows() {
+  let storage = {...localStorage}
   if (Object.keys(storage)[0]) {
     for (let i = 0; i < Math.ceil(Object.keys(storage)[Object.keys(storage).length-1]/10) - 1; i++) {
       const tr = document.createElement("tr");
@@ -59,7 +59,6 @@ createRows()
 
 btnAdd.addEventListener("click", () => {
   createRow()
-  // deleteRow()
   let row_arr = []
   for (let i of tbody.children) {
     row_arr.push(i)
@@ -114,6 +113,5 @@ date_sort.addEventListener("click", () => {dateSort()})
 getTotal()
 
 table.append(tbody)
-
 
 export {tds, trs, num, tbody, getTotal, total_amount, total_items, total_dates}

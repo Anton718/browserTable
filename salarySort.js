@@ -1,7 +1,7 @@
 import {tbody} from "./main.js"
 function salarySort() {
     let storage = {...localStorage}
-    if (!((Object.keys(storage).length/tbody.children.length) === 3)) {
+    if ((Object.keys(storage).length/tbody.children.length) !== 3) {
       alert("Data missing. Fill the boxes");
       return;
     }
@@ -21,12 +21,9 @@ function salarySort() {
     for (let i of salaries_sorted) {
       for (let j of Object.keys(storage)) {
         if (i === storage[j]) {
-          let salary = storage[Number(j)]
-          let name_ = storage[Number(j)-2]
-          let date = storage[Number(j)-1]
-          new_storage.push(name_)
-          new_storage.push(date)
-          new_storage.push(salary)
+          new_storage.push(storage[Number(j)-2])
+          new_storage.push(storage[Number(j)-1])
+          new_storage.push(storage[Number(j)])
         }
       }
     }

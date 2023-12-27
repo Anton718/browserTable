@@ -3,6 +3,7 @@ import { getTotal } from "./getTotal.js"
 import { nameSort } from "./nameSort.js"
 import { salarySort } from "./salarySort.js"
 import { dateSort } from "./dateSort.js"
+import { deleteRow } from "./deleteRow.js"
 const table = document.getElementById("table")
 const tbody = document.createElement("tbody")
 const total_items = document.getElementById("total_items")
@@ -75,35 +76,6 @@ btnAdd.addEventListener("click", () => {
   deleteRow()
 }
 
-function deleteRow() {
-  for (let i of tbody.children) {
-    i.children[0].addEventListener("click", () => {
-      for (let n of i.children) {
-      storage = {...localStorage}
-      n.style.color = "yellow";
-      }
-      btnDel.addEventListener("click",() => {
-        let point = 0
-        for (let n of i.children) {
-          point = n.id;
-          localStorage.removeItem(`${n.id}`)
-          i.remove()
-          location.reload()
-        }
-        for (let i of Object.keys(storage)) {
-            if (Number(i) > Number(point)) {
-              let value = storage[i]
-              let old_index = i
-              i -= 10
-              let new_index = i
-              localStorage.setItem(`${new_index}`, value)
-              localStorage.removeItem(`${old_index}`)
-            }
-        }
-      }) 
-    })
-  }
-}
 deleteRow()
 
 name_sort.addEventListener("click", () => {nameSort()})
@@ -114,4 +86,4 @@ getTotal()
 
 table.append(tbody)
 
-export {tds, trs, num, tbody, getTotal, total_amount, total_items, total_dates}
+export {tds, trs, num, tbody, getTotal, total_amount, total_items, total_dates, btnDel}

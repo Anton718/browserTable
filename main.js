@@ -1,9 +1,9 @@
-import { createColumns } from "./createColumns.js"
 import { getTotal } from "./getTotal.js"
 import { nameSort } from "./nameSort.js"
 import { salarySort } from "./salarySort.js"
 import { dateSort } from "./dateSort.js"
 import { deleteRow } from "./deleteRow.js"
+import { createRow, createRows } from "./createRows.js"
 const table = document.getElementById("table")
 const tbody = document.createElement("tbody")
 const total_items = document.getElementById("total_items")
@@ -17,7 +17,6 @@ date_sort.style.cursor = "pointer"
 salary_sort.style.cursor = "pointer"
 let tds = []
 let trs = []
-let num = 0
 const btnDel = document.createElement("button")
 btnDel.style.marginRight = "5px"
 const btnAdd = document.createElement("button")
@@ -34,28 +33,6 @@ btnDiv.append(btnAdd)
 btnDiv.append(clrCash)
 clrCash.addEventListener("click", () => {localStorage.clear(); location.reload()})
 
-let storage = {...localStorage}
-
-function createRows() {
-  let storage = {...localStorage}
-  if (Object.keys(storage)[0]) {
-    for (let i = 0; i < Math.ceil(Object.keys(storage)[Object.keys(storage).length-1]/10) - 1; i++) {
-      const tr = document.createElement("tr");
-      num += 1
-      tr.id = num 
-      trs.push(tr)
-      tbody.append(tr) 
-      createColumns(tr)
-      for (let i of Object.keys(storage)) {
-        for (let j of tds) {
-          if (i === j.id) {
-              j.children[0].value = storage[i]
-          }
-        }
-      }
-    }
-  }
-}
 createRows()
 
 btnAdd.addEventListener("click", () => {
@@ -65,16 +42,6 @@ btnAdd.addEventListener("click", () => {
     row_arr.push(i)
   }
 })
-
- function createRow() {
-  const tr = document.createElement("tr");
-  num += 1
-  tr.id = num 
-  trs.push(tr)
-  tbody.append(tr)
-  createColumns(tr)
-  deleteRow()
-}
 
 deleteRow()
 
@@ -86,4 +53,4 @@ getTotal()
 
 table.append(tbody)
 
-export {tds, trs, num, tbody, getTotal, total_amount, total_items, total_dates, btnDel}
+export {tds, trs, tbody, getTotal, total_amount, total_items, total_dates, btnDel}

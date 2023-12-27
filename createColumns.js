@@ -1,4 +1,6 @@
-import {tds, tbody, num, getTotal} from "./main.js"
+import {tds, tbody, getTotal} from "./main.js"
+import {num} from "./createRows.js"
+
 function createColumns(tr) {
     for (let i = 0; i < 4; i++) {
       const td = document.createElement("td")

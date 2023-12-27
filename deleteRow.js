@@ -1,10 +1,10 @@
 import {tbody, btnDel} from "./main.js"
 
 function deleteRow() {
+    let storage = {...localStorage}
     for (let i of tbody.children) {
       i.children[0].addEventListener("click", () => {
         for (let n of i.children) {
-        storage = {...localStorage}
         n.style.color = "yellow";
         }
         btnDel.addEventListener("click",() => {
